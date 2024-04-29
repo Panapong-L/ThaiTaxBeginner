@@ -1,0 +1,107 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f7f7f7;
+        }
+
+        h3 {
+            color: #333;
+            background-color: #ffc107;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        h4 {
+            color: #666;
+            margin-top: 15px;
+        }
+
+        h5 {
+            color: #888;
+        }
+
+        input[type="number"] {
+            width: 150px;
+            padding: 5px;
+            margin: 5px 0;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+
+        #sumRevenue, #taxDeduction, #NetRevenue {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        hr {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h3>โปรแกรม - คำนวณภาษีพื้นฐานสำหรับพนักงานเงินเดือน</h3>
+    <h4>รายรับ - Revenue</h4>
+    <h5>สามารถรวมทุกยอดกรอกช่องเดียวได้ หากยอดที่มีไม่สามารถแยกได้</h5>
+    <p>เงินเดือน (รวม 12 เดือน) = <input id="salary" type="number" placeholder="เงินเดือน 12 เดือน"> บาท</p>
+    <p>โบนัส / ค่า Commission = <input id="bonus" type="number" placeholder="โบนัส / ค่า Commission"> บาท</p>
+    <p>Overtime = <input id="overtime" type="number" placeholder="Overtime"> บาท</p> 
+    <p>รายได้เสริม (Part Time / Freelance)(ที่โดนหักภาษี ณ ที่จ่าย) = <input id="freelance" type="number" placeholder="รายได้เสริม"> บาท</p> 
+    <p>เงินปันผล (หุ้น / กองทุน) = <input id="dividend" type="number" placeholder="เงินปันผล"> บาท</p>
+    <p>อื่น ๆ = <input id="other" type="number" placeholder="อื่น ๆ"> บาท</p>
+    <button onclick="sumRevenue()">กดเพื่อรวม</button>
+    <p id="sumRevenue">รวมรายรับ = </p>
+    <hr>
+
+    <h4>รายการลดหย่อน - Tax Deduction</h4>
+    <p>ค่าใช้จ่าย = 100,000 บาท</p>
+    <p>ลดหย่อนบุคคลธรรมดา = 60,000 บาท</p>
+    <p>ประกันสังคม = <input id="sso" type="number" max="9000"  placeholder="ไม่เกิน 9,000 บาท"> บาท</p>
+    <p>ประกันชีวิต = <input id="life insurance" type="number" max="100000" placeholder="ไม่เกิน 100,000 บาท"> บาท</p> 
+    <p>ประกันสุขภาพ = <input id="health insurance" type="number" max="25000" placeholder="ไม่เกิน 25,000 บาท"> บาท</p>
+    <p>ซื้อกองทุนลดหย่อน (Thai ESG) = <input id="esg" type="number" max="500000" placeholder="ไม่เกิน 500,000 บาท"> บาท</p>
+    <p>ซื้อกองทุนลดหย่อน (SSF) = <input id="ssf" type="number" max="500000" placeholder="ไม่เกิน 500,000 บาท"> บาท</p>
+    <p>ซื้อกองทุนลดหย่อน (RMF) = <input id="rmf" type="number" max="500000" placeholder="ไม่เกิน 500,000 บาท"> บาท</p>
+    <p>กองทุนสำรองเลี้ยงชีพ (PVD) = <input id="pvd" type="number" placeholder="ไม่เกิน 500,000 บาท"> บาท</p>
+    <p>ช้อปดีมีคืน = <input id="shopdee" type="number" placeholder="ไม่เกิน 40,000 บาท"> บาท</p>
+    <button onclick="taxDeduction()">sum tax deduction</button>
+    <p id="taxDeduction">รวมรายการลดหย่อน = </p>
+    <hr>
+    <button onclick="calculateTax()">Click here to calculate</button>
+    <p id="NetRevenue">รายได้สุทธิ - รวมลดหย่อน</p>
+     
+
+    <script src="app.js"></script>
+
+    <!-- <button onclick="ButtonCTF(document.getElementById('inputValue').value)">Celsius to Fahrenheit</button>
+    <button onclick="ButtonFTC(document.getElementById('inputValue').value)">Fahrenheit to Celsius</button> -->
+
+    <!-- Celsius
+    Fahrenheit
+    <h1 id="result"></h1> -->
+    <!-- <div id="answer_section">-- = --</div> -->
+</body> 
